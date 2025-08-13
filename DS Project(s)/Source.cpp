@@ -18,12 +18,10 @@ int main() {
 	cout << "\nLinked List Content: \n";
 	MyDblLinkedList.PrintList();
 
-	cout << "\n\nLinked list size: " << MyDblLinkedList.Size();
-
-	MyDblLinkedList.Reverse();
-
-	cout << "\n\nLinked list after reversing: \n";
+	MyDblLinkedList.InsertAfter(4, 500);
+	cout << "\n\nLinked list after inserting 500 after index 2: \n";
 	MyDblLinkedList.PrintList();
+
 	
 
 	system("pause>0");

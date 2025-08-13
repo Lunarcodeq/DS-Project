@@ -247,5 +247,68 @@ public:
 
 	}
 
+	Node* GetNode(T Index) {
+
+		int Counter = 0;
+
+		if (Index > _Size - 1 || Index < 0)
+			return NULL;
+
+		Node* Current = Head;
+		while (Current != NULL && (Current->Next != NULL)) {
+
+			if (Counter == Index)
+				break;
+
+			Current = Current->Next;
+			Counter++;
+
+		}
+
+		return Current;
+
+	}
+
+	T GetItem(T Index) {
+
+		Node* Node = GetNode(Index);
+
+		if (Node == NULL)
+			return NULL;
+		else
+			return Node->Value;
+
+	}
+
+	bool UpdateItem(T Index, T Value) {
+
+		Node* Node = GetNode(Index);
+
+		if (Node != NULL) {
+
+			Node->Value = Value;
+			return true;
+
+		}
+		else {
+			return false;
+		}
+
+	}
+
+	bool InsertAfter(T Index, T Value) {
+
+		Node* Current = GetNode(Index);
+
+		if (Current != NULL) {
+			InsertAfter(Current, Value);
+			return true;
+		}
+		else {
+			return false;
+		}
+
+	}
+
 };
 

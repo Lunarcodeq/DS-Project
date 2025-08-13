@@ -8,6 +8,10 @@ template <class T>
 class clsDblLinkedList
 {
 
+protected:
+
+	int _Size = 0;
+
 public:
 
 	class Node {
@@ -36,6 +40,8 @@ public:
 		
 		Head = NewNode;
 
+		_Size++;
+
 	}
 
 	void PrintList() {
@@ -63,6 +69,8 @@ public:
 		}
 
 		Current->Next = NewNode;
+
+		_Size++;
 
 	}
 
@@ -107,6 +115,7 @@ public:
 
 		}
 
+		_Size++;
 	}
 
 	void DeleteNode(Node* &NodeToDelete) {
@@ -131,6 +140,8 @@ public:
 
 		delete NodeToDelete;
 
+		_Size--;
+
 	}
 
 	void DeleteFirstNode() {
@@ -148,6 +159,8 @@ public:
 
 		delete Temp;
 
+		_Size--;
+
 	}
 
 	void DeleteLastNode() {
@@ -159,6 +172,7 @@ public:
 		if (Head->Next == NULL) {
 			delete Head;
 			Head = NULL;
+			_Size--;
 			return;
 		}
 
@@ -172,6 +186,31 @@ public:
 
 		delete Temp;
 
+		_Size--;
+
+	}
+
+	int Size() {
+
+		/* This is my solution, and it's not the best solution as the doctor said ;');
+		Because this solution Big O is O(n) :')
+
+		int size = 0;
+		Node* Current = Head;
+
+		if (Head == NULL) {
+			return size;
+		}
+
+		while (Current != NULL) {
+			size++;
+			Current = Current->Next;
+		}
+
+		return size; */
+
+		// This solution is much better, because the Big O here is O(1).
+		return _Size;
 	}
 
 };

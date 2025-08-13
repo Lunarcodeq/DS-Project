@@ -7,6 +7,7 @@ int main() {
 
 	clsDblLinkedList <int> MyDblLinkedList;
 
+
 	MyDblLinkedList.InsertAtBeginning(5);
 	MyDblLinkedList.InsertAtBeginning(4);
 	MyDblLinkedList.InsertAtBeginning(3);
@@ -18,6 +19,12 @@ int main() {
 	MyDblLinkedList.PrintList();
 
 	cout << "\n\nLinked list size: " << MyDblLinkedList.Size();
+
+	MyDblLinkedList.Reverse();
+
+	cout << "\n\nLinked list after reversing: \n";
+	MyDblLinkedList.PrintList();
+	
 
 	system("pause>0");
 

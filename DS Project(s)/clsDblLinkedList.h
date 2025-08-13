@@ -172,7 +172,6 @@ public:
 		if (Head->Next == NULL) {
 			delete Head;
 			Head = NULL;
-			_Size--;
 			return;
 		}
 
@@ -211,6 +210,41 @@ public:
 
 		// This solution is much better, because the Big O here is O(1).
 		return _Size;
+	}
+
+	bool IsEmpty() {
+		return (_Size == 0);
+	}
+
+	void Clear() {
+
+		while (_Size > 0) {
+
+			DeleteFirstNode();
+
+		}
+
+	}
+
+	void Reverse() {
+
+		Node* Current = Head;
+		Node* Temp = nullptr;
+
+		while (Current != nullptr) {
+
+			Temp = Current->Prev;
+			Current->Prev = Current->Next;
+			Current->Next = Temp;
+
+			Current = Current->Prev;
+
+		}
+
+		if (Temp != nullptr) {
+			Head = Temp->Prev;
+		}
+
 	}
 
 };

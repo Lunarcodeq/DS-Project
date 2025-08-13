@@ -10,7 +10,7 @@ class clsDblLinkedList
 
 public:
 
-	static class Node {
+	class Node {
 
 	public:
 
@@ -20,25 +20,27 @@ public:
 
 	};
 
+	Node* Head = NULL;
+
 	void InsertAtBeginning(T Value) {
 
 		Node* NewNode = new Node();
 
 		NewNode->Value = Value;
 		NewNode->Prev = NULL;
-		NewNode->Next = _Head;
+		NewNode->Next = Head;
 
-		if (_Head != NULL) {
-			_Head->Prev = NewNode;
+		if (Head != NULL) {
+			Head->Prev = NewNode;
 		}
 		
-		_Head = NewNode;
+		Head = NewNode;
 
 	}
 
 	void PrintList() {
 
-		Node* PrintNode = _Head;
+		Node* PrintNode = Head;
 
 		while (PrintNode != NULL) {
 			cout << PrintNode->Value << " ";
@@ -47,7 +49,7 @@ public:
 
 	}
 
-	void InsertAfter(Node* Current, T Value) {
+	void InsertAfter(Node* &Current, T Value) {
 
 		Node* NewNode = new Node();
 
@@ -66,14 +68,14 @@ public:
 
 	Node* Find(T Value) {
 
-		Node* Head = _Head;
+		Node* Current = Head;
 
-		while (Head != NULL) {
+		while (Current != NULL) {
 
-			if (Head->Value == Value)
-				return Head;
+			if (Current->Value == Value)
+				return Current;
 
-			Head = Head->Next;
+			Current = Current->Next;
 
 		}
 
@@ -88,33 +90,33 @@ public:
 		NewNode->Value = Value;
 		NewNode->Next = NULL;
 
-		if (_Head == NULL) {
+		if (Head == NULL) {
 			NewNode->Prev = NULL;
-			_Head = NewNode;
+			Head = NewNode;
 		}
 		else {
 
-			Node* Head = _Head;
+			Node* Current = Head;
 
-			while (Head->Next != NULL) {
-				Head = Head->Next;
+			while (Current->Next != NULL) {
+				Current = Current->Next;
 			}
 
-			Head->Next = NewNode;
-			NewNode->Prev = Head;
+			Current->Next = NewNode;
+			NewNode->Prev = Current;
 
 		}
 
 	}
 
-	void DeleteNode(Node* NodeToDelete) {
+	void DeleteNode(Node* &NodeToDelete) {
 
-		if (_Head == NULL || NodeToDelete == NULL) {
+		if (Head == NULL || NodeToDelete == NULL) {
 			return;
 		}
 
-		if (_Head == NodeToDelete) {
-			_Head = NodeToDelete->Next;
+		if (Head == NodeToDelete) {
+			Head = NodeToDelete->Next;
 		}
 
 		if (NodeToDelete->Prev != NULL) {
@@ -133,15 +135,15 @@ public:
 
 	void DeleteFirstNode() {
 
-		if (_Head == NULL) {
+		if (Head == NULL) {
 			return;
 		}
 
-		Node* Temp = _Head;
+		Node* Temp = Head;
 
-		_Head = _Head->Next;
-		if (_Head != NULL) {
-			_Head->Prev = NULL;
+		Head = Head->Next;
+		if (Head != NULL) {
+			Head->Prev = NULL;
 		}
 
 		delete Temp;
@@ -150,17 +152,17 @@ public:
 
 	void DeleteLastNode() {
 
-		if (_Head == NULL) {
+		if (Head == NULL) {
 			return;
 		}
 
-		if (_Head->Next == NULL) {
-			delete _Head;
-			_Head = NULL;
+		if (Head->Next == NULL) {
+			delete Head;
+			Head = NULL;
 			return;
 		}
 
-		Node* Current = _Head;
+		Node* Current = Head;
 		while (Current->Next->Next != NULL) {
 			Current = Current->Next;
 		}
@@ -171,10 +173,6 @@ public:
 		delete Temp;
 
 	}
-
-private:
-
-	Node* _Head = NULL;
 
 };
 

@@ -39,7 +39,7 @@ public:
 		return _Queue.GetItem(Size() - 1);
 	}
 
-	T GetItem(int Index) {
+	T GetItem(T Index) {
 
 		return _Queue.GetItem(Index);
 
@@ -51,13 +51,13 @@ public:
 
 	}
 
-	void UpdateItem(int Index, T Value) {
+	void UpdateItem(T Index, T Value) {
 
 		_Queue.UpdateItem(Index, Value);
 
 	}
 
-	void InsertAfter(int Index, T Value) {
+	void InsertAfter(T Index, T Value) {
 
 		_Queue.InsertAfter(Index, Value);
 

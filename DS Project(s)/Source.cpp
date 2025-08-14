@@ -1,56 +1,57 @@
 #include <iostream>
 #include "clsDblLinkedList.h"
 #include "clsMyQueue.h"
+#include "clsMyStack.h"
 
 using namespace std;
 
 int main() {
 
-	clsMyQueue <int> MyQueue;
+	clsMyStack <int> MyStack;
 
-	MyQueue.push(10);
-	MyQueue.push(20);
-	MyQueue.push(30);
-	MyQueue.push(40);
-	MyQueue.push(50);
+	MyStack.push(10);
+	MyStack.push(20);
+	MyStack.push(30);
+	MyStack.push(40);
+	MyStack.push(50);
 	
 	cout << "\nPrint Queue: \n";
-	MyQueue.Print();
+	MyStack.Print();
 
-	cout << "\n\nQueue Size: " << MyQueue.Size();
-	cout << "\nQueue Front: " << MyQueue.front();
-	cout << "\nQueue Back: " << MyQueue.back();
+	cout << "\n\nQueue Size: " << MyStack.Size();
+	cout << "\nQueue Front: " << MyStack.Top();
+	cout << "\nQueue Back: " << MyStack.Bottom();
 
-	MyQueue.pop();
+	MyStack.pop();
 
 	cout << "\n\nQueue after poping: \n";
-	MyQueue.Print();
+	MyStack.Print();
 
-	cout << "\n\nItem(2) is: " << MyQueue.GetItem(2);
+	cout << "\n\nItem(2) is: " << MyStack.GetItem(2);
 
-	MyQueue.Reverse();
+	MyStack.Reverse();
 	cout << "\n\nQueue after reverse : ";
-	MyQueue.Print();
+	MyStack.Print();
 
-	MyQueue.UpdateItem(2, 600);
+	MyStack.UpdateItem(2, 600);
 	cout << "\n\nQueue after updating Item(2) to 600: \n";
-	MyQueue.Print();
+	MyStack.Print();
 
-	MyQueue.InsertAfter(2, 800);
+	MyStack.InsertAfter(2, 800);
 	cout << "\n\nQueue after inserting 800 after 600: \n";
-	MyQueue.Print();
+	MyStack.Print();
 
-	MyQueue.InsertAtFront(1000);
+	MyStack.InsertAtFront(1000);
 	cout << "\n\nQueue after inserting 1000 at front: \n";
-	MyQueue.Print();
+	MyStack.Print();
 
-	MyQueue.InsertAtBack(2300);
+	MyStack.InsertAtBack(2300);
 	cout << "\n\nQueue after insering 2300 at the back: \n";
-	MyQueue.Print();
+	MyStack.Print();
 
-	MyQueue.Clear();
+	MyStack.Clear();
 	cout << "\n\nQueue after clearing: \n";
-	MyQueue.Print();
+	MyStack.Print();
 
 	system("pause>0");
 

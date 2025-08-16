@@ -22,16 +22,15 @@ int main() {
 
 	MyArray.PrintList();
 
-	MyArray.Resize(7);
-	cout << "\nArray items after resizing to 7: \n";
-	MyArray.PrintList();
-	cout << "\nArray Size: " << MyArray.Size() << "\n";
+	// cout << "\nItem (2) is: " << MyArray.GetItem(0);
 
-	MyArray.Resize(2);
-	cout << "\nArray items after resizing to 2: \n";
-	MyArray.PrintList();
-	cout << "\nArray Size: " << MyArray.Size() << "\n";
+	MyArray.DeleteItemAt(2);
 
+	cout << "\n\nArray after deleting element at index 2: \n";
+
+	MyArray.PrintList();
+
+	cout << "\nArray Size: " << MyArray.Size();
 
 	system("pause>0");
 

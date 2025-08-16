@@ -17,7 +17,7 @@ protected:
 
 public:
 
-	T* _Array;
+	T* Array;
 
 	clsMyDynamicArray(int Size = 0) {
 
@@ -26,13 +26,13 @@ public:
 
 		_Size += Size;
 
-		_Array = new T[_Size];
+		Array = new T[_Size];
 
 	}
 
 	~clsMyDynamicArray() {
 
-		delete[] _Array;
+		delete[] Array;
 
 	}
 
@@ -41,7 +41,7 @@ public:
 		if (Index >= _Size || _Size < 0)
 			return false;
 
-		_Array[Index] = Value;
+		Array[Index] = Value;
 		return true;
 
 	}
@@ -50,7 +50,7 @@ public:
 
 		for (int i = 0; i < _Size; i++) {
 
-			cout << _Array[i] << " ";
+			cout << Array[i] << " ";
 
 		}
 
@@ -80,14 +80,74 @@ public:
 
 		for (int i = 0; i < _Size; i++) {
 
-			_TempArray[i] = _Array[i];
+			_TempArray[i] = Array[i];
 
 		}
 
 		_Size = NewSize;
 
-		delete[] _Array;
-		_Array = _TempArray;
+		delete[] Array;
+		Array = _TempArray;
+
+	}
+
+	T GetItem(int Index) {
+
+		if (Index < 0 || Index > _Size - 1)
+			return 0;
+
+		return Array[Index];
+
+	}
+
+	void Reverse() {
+		
+		_TempArray = new T[_Size];
+
+		int counter = 0;
+
+		for (int i = _Size - 1; i >= 0; i--) {
+
+			_TempArray[counter] = Array[i];
+			counter++;
+
+		}
+
+		delete[] Array;
+		Array = _TempArray;
+
+	}
+
+	void Clear() {
+
+		delete[] Array;
+
+		_Size = 0;
+
+	}
+
+	void DeleteItemAt(int IndexToDelete) {
+
+		int NewSize = _Size - 1;
+
+		_TempArray = new T[NewSize];
+
+		for (int i = 0; i < IndexToDelete; i++) {
+
+			_TempArray[i] = Array[i];
+
+		}
+
+		for (int j = IndexToDelete + 1; j < NewSize + 1; j++)
+		{
+
+			_TempArray[j - 1] = Array[j];
+
+		}
+
+		delete[] Array;
+		_Size = NewSize;
+		Array = _TempArray;
 
 	}
 

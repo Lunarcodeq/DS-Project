@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 
-	clsMyDynamicArray <int> MyArray(10);
+	clsMyDynamicArray <int> MyArray(5);
 
 	MyArray.SetItem(0, 10);
 	MyArray.SetItem(1, 20);
@@ -21,6 +21,16 @@ int main() {
 	cout << "\n\nArray Items: \n";
 
 	MyArray.PrintList();
+
+	MyArray.Resize(7);
+	cout << "\nArray items after resizing to 7: \n";
+	MyArray.PrintList();
+	cout << "\nArray Size: " << MyArray.Size() << "\n";
+
+	MyArray.Resize(2);
+	cout << "\nArray items after resizing to 2: \n";
+	MyArray.PrintList();
+	cout << "\nArray Size: " << MyArray.Size() << "\n";
 
 
 	system("pause>0");

@@ -13,6 +13,7 @@ class clsMyDynamicArray
 protected:
 
 	int _Size = 0;
+	T* _TempArray;
 
 public:
 
@@ -47,7 +48,7 @@ public:
 
 	void PrintList() {
 
-		for (int i = 0; i < _Size - 1; i++) {
+		for (int i = 0; i < _Size; i++) {
 
 			cout << _Array[i] << " ";
 
@@ -65,6 +66,29 @@ public:
 
 	int Size() {
 		return _Size;
+	}
+
+	void Resize(int NewSize) {
+
+		if (NewSize < 0)
+			NewSize = 0;
+
+		_TempArray = new T[NewSize];
+
+		if (NewSize < _Size)
+			_Size = NewSize;
+
+		for (int i = 0; i < _Size; i++) {
+
+			_TempArray[i] = _Array[i];
+
+		}
+
+		_Size = NewSize;
+
+		delete[] _Array;
+		_Array = _TempArray;
+
 	}
 
 };

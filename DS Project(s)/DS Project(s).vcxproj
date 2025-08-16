@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsDblLinkedList.h" />
+    <ClInclude Include="clsMyDynamicArray.h" />
     <ClInclude Include="clsMyQueue.h" />
     <ClInclude Include="clsMyStack.h" />
   </ItemGroup>

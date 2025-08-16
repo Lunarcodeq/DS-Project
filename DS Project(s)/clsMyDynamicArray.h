@@ -20,9 +20,12 @@ public:
 
 	clsMyDynamicArray(int Size = 0) {
 
-		_Array = new T[Size];
+		if (Size < 0)
+			Size = 0;
 
 		_Size += Size;
+
+		_Array = new T[_Size];
 
 	}
 

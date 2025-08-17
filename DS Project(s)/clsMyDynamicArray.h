@@ -24,7 +24,7 @@ public:
 		if (Size < 0)
 			Size = 0;
 
-		_Size += Size;
+		_Size = Size;
 
 		Array = new T[_Size];
 
@@ -120,9 +120,10 @@ public:
 
 	void Clear() {
 
-		delete[] Array;
-
 		_Size = 0;
+
+		delete[] Array;
+		Array = new T[_Size];
 
 	}
 

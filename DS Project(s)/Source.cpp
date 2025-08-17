@@ -22,14 +22,24 @@ int main() {
 
 	MyArray.PrintList();
 
-	// cout << "\nItem (2) is: " << MyArray.GetItem(0);
-
-	MyArray.DeleteItemAt(2);
-
-	cout << "\n\nArray after deleting element at index 2: \n";
-
+	MyArray.InsertAtBeginning(500);
+	cout << "\nArray after inserting 500 at beginning: \n";
 	MyArray.PrintList();
+	cout << "\nArray Size: " << MyArray.Size();
 
+	MyArray.InsertBefore(2, 600);
+	cout << "\nArray after inserting 600 before index 2: \n";
+	MyArray.PrintList();
+	cout << "\nArray Size: " << MyArray.Size();
+
+	MyArray.InsertAfter(2, 800);
+	cout << "\nArray after inserting 800 after index 2: \n";
+	MyArray.PrintList();
+	cout << "\nArray Size: " << MyArray.Size();
+
+	MyArray.InsertAtEnd(1000);
+	cout << "\nArray after inserting 1000 at end: \n";
+	MyArray.PrintList();
 	cout << "\nArray Size: " << MyArray.Size();
 
 	system("pause>0");

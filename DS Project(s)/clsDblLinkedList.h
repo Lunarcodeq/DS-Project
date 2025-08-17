@@ -247,7 +247,7 @@ public:
 
 	}
 
-	Node* GetNode(T Index) {
+	Node* GetNode(int Index) {
 
 		int Counter = 0;
 
@@ -269,7 +269,7 @@ public:
 
 	}
 
-	T GetItem(T Index) {
+	T GetItem(int Index) {
 
 		Node* Node = GetNode(Index);
 
@@ -280,7 +280,7 @@ public:
 
 	}
 
-	bool UpdateItem(T Index, T Value) {
+	bool UpdateItem(int Index, T Value) {
 
 		Node* Node = GetNode(Index);
 
@@ -296,7 +296,7 @@ public:
 
 	}
 
-	bool InsertAfter(T Index, T Value) {
+	bool InsertAfter(int Index, T Value) {
 
 		Node* Current = GetNode(Index);
 

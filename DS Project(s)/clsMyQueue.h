@@ -75,6 +75,12 @@ public:
 
 	}
 
+	bool IsEmpty() {
+
+		return _Queue.IsEmpty();
+
+	}
+
 	void Clear() {
 
 		_Queue.Clear();

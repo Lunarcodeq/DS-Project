@@ -1,55 +1,53 @@
 #include <iostream>
-#include "clsMyQueueArr.h"
-#include "clsMyStackArr.h"
+#include "clsMyString.h"
 
 using namespace std;
 
 int main() {
 
-	clsMyStackArr <int> MyQueue;
+	clsMyString S1;
 	
-	MyQueue.push(10);
-	MyQueue.push(20);
-	MyQueue.push(30);
-	MyQueue.push(40);
-	MyQueue.push(50);
+	cout << "\n S1 value: " << S1.Value << endl;
 
-	cout << "\nQueue\n";
-	MyQueue.Print();
+	S1.Value = "Mohammed";
 
-	cout << "\nQueue Size: " << MyQueue.Size();
-	cout << "\nQueue Front: " << MyQueue.front();
-	cout << "\nQueue Back: " << MyQueue.back();
-	
-	MyQueue.pop();
+	cout << "\nS1 Value: " << S1.Value << endl;
 
-	cout << "\n\nThe queue after poping: \n";
-	MyQueue.Print();
+	S1.Value = "Mohammed1";
 
-	MyQueue.Reverse();
-	cout << "\n\nQueue after reversing: \n";
-	MyQueue.Print();
+	cout << "\nS1 Value: " << S1.Value << endl;
 
-	MyQueue.UpdateItem(2, 200);
-	cout << "\n\nQueue after updating item 2 to 200: \n";
-	MyQueue.Print();
+	S1.Value = "Mohammed2";
 
-	MyQueue.InsertAfter(2, 300);
-	cout << "\n\nQueue after inserting 300 after index 2: \n";
-	MyQueue.Print();
+	cout << "\nS1 Value: " << S1.Value << endl;
 
-	MyQueue.InsertAtFront(1000);
-	cout << "\n\nQueue after inserting 1000 at front: \n";
-	MyQueue.Print();
+	cout << "\n\t\tUndo: \n\n";
 
-	MyQueue.InsertAtBack(2000);
-	cout << "\n\nQueue after inserting 2000 at back: \n";
-	MyQueue.Print();
+	S1.Undo();
 
-	MyQueue.Clear();
-	cout << "\n\nQueue after clear: \n";
-	MyQueue.Clear();
+	cout << "S1 value: " << S1.Value << endl;
 
+	S1.Undo();
+
+	cout << "S1 value: " << S1.Value << endl;
+
+	S1.Undo();
+
+	cout << "S1 value: " << S1.Value << endl;
+
+	cout << "\n\nRedo: \n";
+
+	S1.Redo();
+
+	cout << "\nS1 value: " << S1.Value << endl;
+
+	S1.Redo();
+
+	cout << "\nS1 value: " << S1.Value << endl;
+
+	S1.Redo();
+
+	cout << "\nS1 value: " << S1.Value << endl;
 
 	system("pause>0");
 

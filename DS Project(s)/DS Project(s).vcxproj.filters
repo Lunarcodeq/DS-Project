@@ -38,5 +38,8 @@
     <ClInclude Include="clsMyStackArr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="clsMyString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

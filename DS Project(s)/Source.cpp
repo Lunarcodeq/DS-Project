@@ -1,53 +1,25 @@
 #include <iostream>
-#include "clsMyString.h"
+#include "clsQueueLine.h"
 
 using namespace std;
 
 int main() {
 
-	clsMyString S1;
-	
-	cout << "\n S1 value: " << S1.Value << endl;
+	clsQueueLine PayBillTickets("A0", 5);
 
-	S1.Value = "Mohammed";
+	PayBillTickets.IssueTicket();
+	PayBillTickets.IssueTicket();
+	PayBillTickets.IssueTicket();
+	PayBillTickets.IssueTicket();
+	PayBillTickets.IssueTicket();
 
-	cout << "\nS1 Value: " << S1.Value << endl;
+	cout << "\nQueue Info: \n";
+	PayBillTickets.PrintInfo();
 
-	S1.Value = "Mohammed1";
+	PayBillTickets.PrintTicketsLineRTL();
+	PayBillTickets.PrintTicketsLineLTR();
 
-	cout << "\nS1 Value: " << S1.Value << endl;
-
-	S1.Value = "Mohammed2";
-
-	cout << "\nS1 Value: " << S1.Value << endl;
-
-	cout << "\n\t\tUndo: \n\n";
-
-	S1.Undo();
-
-	cout << "S1 value: " << S1.Value << endl;
-
-	S1.Undo();
-
-	cout << "S1 value: " << S1.Value << endl;
-
-	S1.Undo();
-
-	cout << "S1 value: " << S1.Value << endl;
-
-	cout << "\n\nRedo: \n";
-
-	S1.Redo();
-
-	cout << "\nS1 value: " << S1.Value << endl;
-
-	S1.Redo();
-
-	cout << "\nS1 value: " << S1.Value << endl;
-
-	S1.Redo();
-
-	cout << "\nS1 value: " << S1.Value << endl;
+	PayBillTickets.PrintAllTickets();
 
 	system("pause>0");
 

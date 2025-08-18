@@ -31,7 +31,7 @@ private:
 
 	queue <stClient> _QueueLine;
 
-	// -------------------------------
+	// ------------------------------
 
 	static string _GetSystemDateTimeString() {
 

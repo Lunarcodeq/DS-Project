@@ -25,13 +25,13 @@ private:
 
 		string _TicketDate = _GetSystemDateTimeString();
 		string _TicketPrefix;
-		short _ServeTime;
 		short _ClientsToWait = 0;
 
 	};
 
 	queue <stClient> _QueueLine;
-	queue <stClient> _TempQueue;
+
+	// -------------------------------
 
 	static string _GetSystemDateTimeString() {
 
@@ -61,9 +61,27 @@ private:
 		cout << setw(41) << left << "" << Client._TicketDate << "\n";
 		cout << setw(41) << left << "" << "Waiting Clients: " << Client._ClientsToWait << "\n";
 		cout << setw(41) << left << "" << "Serve Time In\n";
-		cout << setw(41) << left << "" << Client._ServeTime << " Minute(s).\n";
+		cout << setw(41) << left << "" << _TimeToServe * Client._ClientsToWait << " Minute(s).\n";
 
 		cout << setw(36) << left << "" << "________________________\n\n";
+
+	}
+
+	queue <stClient> _DecreaseWaitingTime() {
+
+		queue <stClient> Temp;
+
+		while (!_QueueLine.empty()) {
+
+			stClient Client = _QueueLine.front();
+			Client._ClientsToWait--;
+
+			Temp.push(Client);
+			_QueueLine.pop();
+
+		}
+
+		return Temp;
 
 	}
 
@@ -81,7 +99,6 @@ public:
 		stClient Client;
 
 		Client._TicketPrefix = _Prefix + to_string(_QueueLine.size() + 1);
-		Client._ServeTime = _TimeToServe * (_QueueLine.size());
 		Client._ClientsToWait = _QueueLine.size();
 		_QueueLine.push(Client);
 
@@ -107,24 +124,40 @@ public:
 
 	void PrintTicketsLineRTL() {
 
+		queue <stClient> Temp = _QueueLine;
+		stack <stClient> StackTemp;
+
 		cout << "\n\n" << setw(27) << left << "" << "Tickets: ";
 
-		for (int i = 1; i <= _QueueLine.size(); i++) {
+		while (!Temp.empty()) {
 
-			cout << (_Prefix + to_string(i)) + " <-- ";
+			StackTemp.push(Temp.front());
+			Temp.pop();
+
+		}
+
+
+		while (!StackTemp.empty()) {
+
+			stClient Client = StackTemp.top();
+			cout << Client._TicketPrefix << " <-- ";
+			StackTemp.pop();
 
 		}
 
 	}
 
 	void PrintTicketsLineLTR() {
-
+		
+		queue <stClient> TempQueue = _QueueLine;
 
 		cout << "\n\n" << setw(27) << left << "" << "Tickets: ";
 
-		for (int i = _QueueLine.size(); i > 0; i--) {
+		while (!TempQueue.empty()) {
 
-			cout << (_Prefix + to_string(i)) + " --> ";
+			stClient Client = TempQueue.front();
+			cout << Client._TicketPrefix << " --> ";
+			TempQueue.pop();
 
 		}
 
@@ -132,16 +165,26 @@ public:
 
 	void PrintAllTickets() {
 
-		_TempQueue = _QueueLine;
+		queue <stClient> TempQueue = _QueueLine;
 
 		cout << "\n\n\n\n" << setw(41) << left << "" << " ---Tickets---\n";
 
-		while (!_TempQueue.empty()) {
+		while (!TempQueue.empty()) {
 
-			_PrintTicket(_TempQueue.front());
-			_TempQueue.pop();
+			_PrintTicket(TempQueue.front());
+			TempQueue.pop();
 
 		}
+
+	}
+
+	void ServeNextClient() {
+
+		_QueueLine.pop();
+		_ServedClients++;
+		_WaitingClients--;
+
+		_QueueLine = _DecreaseWaitingTime();
 
 	}
 
